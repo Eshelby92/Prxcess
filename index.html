@@ -39,7 +39,7 @@
     </script>
     <style>
         /* Base Styles & Premium Utilities */
-        body { background-color: #080808; overflow-x: hidden; scroll-behavior: smooth; }
+        html, body { background-color: #080808; overflow-x: hidden; width: 100%; position: relative; scroll-behavior: smooth; }
         ::selection { background: rgba(240, 86, 255, 0.3); color: white; }
         
         /* Glass Card Effect */
@@ -107,7 +107,8 @@
         }
     </style>
 </head>
-<body class="font-body-md text-body-md text-on-surface antialiased">
+<body class="font-body-md text-body-md text-on-surface antialiased bg-[#080808]">
+<div id="top" class="w-full overflow-x-hidden relative min-h-screen">
 
 <!-- Dynamic Mouse Follower Blob -->
 <div id="bgtrailer" class="fixed w-[600px] h-[600px] rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 blur-[120px] opacity-0 md:opacity-40 pointer-events-none z-0 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-1000"></div>
@@ -511,5 +512,6 @@
             setKindoImg(newIndex);
         }
     </script>
+</div>
 </body>
 </html>
