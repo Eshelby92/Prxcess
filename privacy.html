@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Prxcess Apps</title>
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Geist:wght@400;500;700&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+    try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+                "primary": "#f056ff",
+                "secondary": "#00f0ff",
+                "tertiary": "#ff3366",
+                "surface": "#080808",
+                "surface-variant": "#141414",
+                "on-surface": "#ffffff",
+                "on-surface-variant": "#a3a3a3",
+                "primary-container": "#9d00ff",
+                "on-primary-container": "#ffffff",
+                "secondary-container": "#0088ff",
+            },
+            fontFamily: {
+                "display-lg": ["Sora"],
+                "body-lg": ["Geist"],
+                "headline-lg": ["Sora"],
+                "headline-md": ["Sora"],
+                "body-md": ["Geist"],
+                "label-sm": ["Space Mono"]
+            }
+          }
+        }
+      }
+    }catch(_e){}
+    </script>
+    <style>
+        html, body { background-color: #080808; overflow-x: hidden; width: 100%; position: relative; scroll-behavior: smooth; }
+        ::selection { background: rgba(240, 86, 255, 0.3); color: white; }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-surface antialiased bg-[#080808]">
+<div id="top" class="w-full overflow-x-hidden relative min-h-screen flex flex-col">
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/30 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+    <div class="flex justify-between items-center h-20 px-6 md:px-12 max-w-[1280px] mx-auto">
+        <a href="index.html" class="font-display-lg text-2xl font-extrabold tracking-tighter text-white">Prxcess<span class="text-primary">.</span></a>
+        
+        <div class="hidden md:flex items-center gap-10">
+            <a href="index.html#apps" class="text-on-surface-variant hover:text-white transition-colors font-body-md">Apps</a>
+            <a href="index.html#capabilities" class="text-on-surface-variant hover:text-white transition-colors font-body-md">Capabilities</a>
+            <a href="index.html#contact" class="text-on-surface-variant hover:text-white transition-colors font-body-md">Contact</a>
+        </div>
+        
+        <a href="index.html#contact" class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2.5 rounded-full font-bold active:scale-95 hover:scale-105 hover:shadow-[0_0_20px_rgba(240,86,255,0.4)] transition-all duration-300">
+            Contact
+        </a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-24 relative z-10 px-6 md:px-12 max-w-[800px] mx-auto w-full">
+    <h1 class="font-display-lg text-4xl md:text-5xl text-white mb-8 font-bold">Privacy Policy</h1>
+    <p class="text-on-surface-variant font-body-lg text-lg mb-6 leading-relaxed">
+        This Privacy Policy is currently being updated. Please check back later.
+    </p>
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-white/5 bg-surface relative z-10 mt-auto">
+    <div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-[1280px] mx-auto gap-8">
+        <div class="font-display-lg text-2xl font-extrabold text-white">Prxcess<span class="text-primary">.</span></div>
+        <div class="flex flex-wrap justify-center gap-8">
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-xs uppercase tracking-wider" href="privacy.html">Privacy Policy</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-xs uppercase tracking-wider" href="terms.html">Terms of Service</a>
+        </div>
+        <div class="text-on-surface-variant font-label-sm text-xs opacity-60">
+            © 2026 Prxcess Studio. All rights reserved.
+        </div>
+    </div>
+</footer>
+</div>
+</body>
+</html>
