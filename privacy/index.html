@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Prxcess Apps</title>
+    <link rel="icon" type="image/png" href="../favicon.png?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Geist:wght@400;500;700&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+    try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+                "primary": "#f056ff",
+                "secondary": "#00f0ff",
+                "tertiary": "#ff3366",
+                "surface": "#080808",
+                "surface-variant": "#141414",
+                "on-surface": "#ffffff",
+                "on-surface-variant": "#a3a3a3",
+                "primary-container": "#9d00ff",
+                "on-primary-container": "#ffffff",
+                "secondary-container": "#0088ff",
+            },
+            fontFamily: {
+                "display-lg": ["Sora"],
+                "body-lg": ["Geist"],
+                "headline-lg": ["Sora"],
+                "headline-md": ["Sora"],
+                "body-md": ["Geist"],
+                "label-sm": ["Space Mono"]
+            }
+          }
+        }
+      }
+    }catch(_e){}
+    </script>
+    <style>
+        html, body { background-color: #080808; overflow-x: hidden; width: 100%; position: relative; scroll-behavior: smooth; }
+        ::selection { background: rgba(240, 86, 255, 0.3); color: white; }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-surface antialiased bg-[#080808]">
+<div id="top" class="w-full overflow-x-hidden relative min-h-screen flex flex-col">
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/30 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+    <div class="flex justify-between items-center h-20 px-6 md:px-12 max-w-[1280px] mx-auto">
+        <a href="../index.html" class="font-display-lg text-2xl font-extrabold tracking-tighter text-white">Prxcess<span class="text-primary">.</span></a>
+        
+        <div class="hidden md:flex items-center gap-10">
+            <a href="../index.html#apps" class="text-on-surface-variant hover:text-white transition-colors font-body-md">Apps</a>
+            <a href="../index.html#capabilities" class="text-on-surface-variant hover:text-white transition-colors font-body-md">Capabilities</a>
+            <a href="../index.html#contact" class="text-on-surface-variant hover:text-white transition-colors font-body-md">Contact</a>
+        </div>
+        
+        <a href="../index.html#contact" class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2.5 rounded-full font-bold active:scale-95 hover:scale-105 hover:shadow-[0_0_20px_rgba(240,86,255,0.4)] transition-all duration-300">
+            Contact
+        </a>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-24 relative z-10 px-6 md:px-12 max-w-[800px] mx-auto w-full">
+    <h1 class="font-display-lg text-4xl md:text-5xl text-white mb-8 font-bold">Privacy Policy</h1>
+    
+    <div class="prose prose-invert max-w-none text-on-surface-variant mb-12 space-y-6">
+        <p class="font-body-lg text-lg leading-relaxed">
+            Prxcess Apps respects your privacy and is committed to protecting your personal data. 
+            This general privacy policy informs you about how we look after your personal data when you visit our website 
+            or use our applications, and tells you about your privacy rights and how the law protects you.
+        </p>
+        <p class="font-body-lg text-lg leading-relaxed">
+            We may collect, use, store and transfer different kinds of personal data about you depending on the application you use.
+            Please review the specific app sections below for detailed information on what data each application collects and how it is used.
+        </p>
+    </div>
+
+    <!-- App Specific Policies -->
+    <h2 class="text-3xl text-white font-bold font-display-lg mb-6">App-Specific Policies</h2>
+    
+    <div class="space-y-4">
+        <!-- Kindo App Policy -->
+        <details class="group bg-surface-variant rounded-2xl border border-white/5 overflow-hidden transition-all duration-300">
+            <summary class="flex justify-between items-center cursor-pointer p-6 list-none hover:bg-white/[0.02] transition-colors">
+                <div class="flex items-center gap-4">
+                    <h3 class="text-xl text-white font-bold font-headline-md">Kindo</h3>
+                    <span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full uppercase tracking-wider font-label-sm">Active</span>
+                </div>
+                <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform duration-300">expand_more</span>
+            </summary>
+            
+            <div class="p-6 border-t border-white/5 text-on-surface-variant space-y-6">
+                <div>
+                    <h4 class="text-white font-bold mb-2">1. Developer Information</h4>
+                    <p>The Kindo app is developed and maintained by <strong>Prxcess Apps</strong>.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-2">2. Data Collection & Usage</h4>
+                    <p>We collect the following information to provide and improve our service:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>Authentication Data:</strong> We collect your email address for authentication purposes, powered by Firebase.</li>
+                        <li><strong>User-Generated Content:</strong> We store content you create within the app for functionality, such as chores, notes, and other related data, using Firestore.</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-2">3. Third-Party Services</h4>
+                    <p>We use trusted third-party services to ensure the app functions correctly, including processing payments:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>Google Play:</strong> Used for app distribution and in-app purchases.</li>
+                        <li><strong>RevenueCat:</strong> Used to manage and process subscriptions and payments.</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-2">4. Data Deletion</h4>
+                    <p>You have the right to request the deletion of your account and associated data. You can do this by:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li>Using the <strong>"Delete Account"</strong> button located inside the app settings.</li>
+                        <li>Contacting us directly via email to request account and data deletion.</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-white/5 bg-surface relative z-10 mt-auto">
+    <div class="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 max-w-[1280px] mx-auto gap-8">
+        <div class="font-display-lg text-2xl font-extrabold text-white">Prxcess<span class="text-primary">.</span></div>
+        <div class="flex flex-wrap justify-center gap-8">
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-xs uppercase tracking-wider" href="../privacy/">Privacy Policy</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-xs uppercase tracking-wider" href="../terms.html">Terms of Service</a>
+        </div>
+        <div class="text-on-surface-variant font-label-sm text-xs opacity-60">
+            © 2026 Prxcess Studio. All rights reserved.
+        </div>
+    </div>
+</footer>
+</div>
+</body>
+</html>
