@@ -127,6 +127,59 @@
                 </div>
             </div>
         </details>
+
+        <!-- BrewBalance App Policy -->
+        <details class="group bg-surface-variant rounded-2xl border border-white/5 overflow-hidden transition-all duration-300">
+            <summary class="flex justify-between items-center cursor-pointer p-6 list-none hover:bg-white/[0.02] transition-colors">
+                <div class="flex items-center gap-4">
+                    <h3 class="text-xl text-white font-bold font-headline-md">BrewBalance</h3>
+                    <span class="px-3 py-1 bg-[#ffb000]/20 text-[#ffb000] text-xs font-bold rounded-full uppercase tracking-wider font-label-sm">Testing</span>
+                </div>
+                <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform duration-300">expand_more</span>
+            </summary>
+            
+            <div class="p-6 border-t border-white/5 text-on-surface-variant space-y-6">
+                <div>
+                    <h4 class="text-white font-bold mb-2">1. Developer Information</h4>
+                    <p>The BrewBalance app is developed and maintained by <strong>Prxcess Apps</strong>. Contact us at <a href="mailto:support@prxcess.com" class="text-[#ffb000] hover:underline font-bold">support@prxcess.com</a>.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-2">2. Data Collection, Usage, and Sharing</h4>
+                    <p>We collect and use your data strictly to provide and improve the BrewBalance service. <strong>We do not sell your personal data to third parties.</strong></p>
+                    <ul class="list-disc pl-5 mt-2 space-y-2">
+                        <li><strong>Authentication Data:</strong> We collect your email address via Firebase Auth solely to create and manage your account.</li>
+                        <li><strong>Health & Intake Data:</strong> We store your daily caffeine intake and biometric sleep scores in Firestore to provide personalized insights and analytics within the app.</li>
+                        <li><strong>Location Data:</strong> We request foreground location access strictly to locate nearby coffee shops. This data is processed temporarily and is never stored on our servers.</li>
+                        <li><strong>Camera Access:</strong> We request camera permissions solely to scan barcodes locally on your device. Image data is processed on-device and never transmitted or saved.</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-2">3. Google API Services Compliance</h4>
+                    <p>BrewBalance's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" class="text-[#ffb000] hover:underline font-bold">Google API Services User Data Policy</a>, including the Limited Use requirements. We ensure that data retrieved via Google Maps or Google Authentication is used exclusively to provide the core app functionality and is never used for serving ads.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-2">4. Third-Party Services</h4>
+                    <p>We use trusted third-party services to ensure the app functions correctly:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li><strong>Google Maps Platform:</strong> Used for location-based coffee shop discovery.</li>
+                        <li><strong>Open Food Facts API:</strong> Used to retrieve nutritional data from scanned barcodes.</li>
+                        <li><strong>Terra API:</strong> Used to integrate wearable data (Fitbit, Garmin, etc.).</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-2">5. Data Retention and Deletion</h4>
+                    <p>We retain your data only for as long as your account is active. You have the right to request the complete deletion of your account and all associated data at any time. You can do this by:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li>Using the <strong>"Delete Account"</strong> button located inside the app settings.</li>
+                        <li>Contacting us directly at <a href="mailto:support@prxcess.com" class="text-[#ffb000] hover:underline font-bold">support@prxcess.com</a>. Upon request, all user data (including health logs and authentication records) will be permanently deleted from our databases within 30 days.</li>
+                    </ul>
+                </div>
+            </div>
+        </details>
     </div>
 </main>
 
