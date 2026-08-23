@@ -102,9 +102,11 @@
                 <div>
                     <h4 class="text-white font-bold mb-2">2. Data Collection & Usage</h4>
                     <p>We collect the following information to provide and improve our service:</p>
-                    <ul class="list-disc pl-5 mt-2 space-y-1">
-                        <li><strong>Authentication Data:</strong> We collect your email address for authentication purposes, powered by Firebase.</li>
-                        <li><strong>User-Generated Content:</strong> We store content you create within the app for functionality, such as chores, notes, and other related data, using Firestore.</li>
+                    <ul class="list-disc pl-5 mt-2 space-y-2">
+                        <li><strong>Personal Information:</strong> We collect your email address and generate unique User IDs for account creation and management, powered by Firebase Auth. If provided during onboarding, we may also store your name.</li>
+                        <li><strong>Financial Information:</strong> We collect your purchase history to track subscription status, active entitlements, and past renewals via RevenueCat. We do not collect or process credit card information directly; this is securely handled by the App Store or Google Play.</li>
+                        <li><strong>App Activity & User-Generated Content:</strong> We store content you create within the app to provide core functionality, such as syncing chores, tasks, and notes, using Firebase Cloud Firestore.</li>
+                        <li><strong>Device or Other IDs:</strong> We collect device installation IDs automatically via Firebase and RevenueCat for fraud prevention, analytics, and ensuring your purchases sync correctly across your devices.</li>
                     </ul>
                 </div>
                 
@@ -293,7 +295,7 @@
                 showAlert("Your account and all associated data have been successfully and permanently deleted.", "success");
             } catch (error) {
                 console.error(error);
-                let errorMessage = "An error occurred. Please check your email and password and try again.";
+                let errorMessage = `An error occurred: ${error.message}`;
                 if(error.code === 'auth/invalid-credential') errorMessage = "Incorrect email or password.";
                 if(error.code === 'auth/too-many-requests') errorMessage = "Too many failed attempts. Please try again later.";
                 
@@ -333,7 +335,7 @@
                 showAlert("Your Google-linked account and all associated data have been successfully and permanently deleted.", "success");
             } catch (error) {
                 console.error(error);
-                let errorMessage = "An error occurred during Google Sign-In. Please try again.";
+                let errorMessage = `Google Sign-In Error: ${error.message}`;
                 if(error.code === 'auth/popup-closed-by-user') errorMessage = "Google Sign-In was cancelled.";
                 
                 showAlert(errorMessage, "error");
