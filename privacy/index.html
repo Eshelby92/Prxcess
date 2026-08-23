@@ -142,6 +142,16 @@
                                 Permanently Delete My Account
                             </button>
                         </form>
+                        
+                        <div class="mt-4 flex items-center justify-between">
+                            <hr class="w-full border-white/10">
+                            <span class="px-3 text-xs text-on-surface-variant font-bold uppercase tracking-wider">OR</span>
+                            <hr class="w-full border-white/10">
+                        </div>
+                        <button type="button" id="kindo-google-btn" class="mt-4 w-full bg-white text-black hover:bg-gray-200 px-4 py-2 rounded-lg font-bold transition-colors flex justify-center items-center gap-2">
+                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="w-5 h-5">
+                            Delete via Google Sign-In
+                        </button>
                     </div>
 
                     <p class="text-sm text-on-surface-variant">Alternatively, you can delete your account from within the Kindo app (Profile > Settings > Delete Account) or email us at <a href="mailto:support@prxcess.com" class="text-primary hover:underline font-bold">support@prxcess.com</a> with the subject "Account Deletion Request".</p>
@@ -223,7 +233,7 @@
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, deleteUser } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getAuth, signInWithEmailAndPassword, deleteUser, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
     const firebaseConfig = {
       projectId: "kindo-app-9579d",
@@ -246,6 +256,7 @@
     const form = document.getElementById('kindo-delete-form');
     const alertBox = document.getElementById('kindo-delete-alert');
     const submitBtn = document.getElementById('kindo-delete-btn');
+    const googleBtn = document.getElementById('kindo-google-btn');
 
     if(form) {
         form.addEventListener('submit', async (e) => {
@@ -274,6 +285,11 @@
                 
                 // 3. Update UI
                 form.classList.add('hidden');
+                if (googleBtn) {
+                    googleBtn.classList.add('hidden');
+                    const separator = googleBtn.previousElementSibling;
+                    if (separator) separator.classList.add('hidden');
+                }
                 showAlert("Your account and all associated data have been successfully and permanently deleted.", "success");
             } catch (error) {
                 console.error(error);
@@ -286,6 +302,45 @@
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<span class="material-symbols-outlined text-sm">delete_forever</span> Permanently Delete My Account';
                 submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        });
+    }
+
+    if(googleBtn) {
+        googleBtn.addEventListener('click', async () => {
+            if(!auth) {
+                showAlert("Firebase configuration is missing.", "error");
+                return;
+            }
+
+            googleBtn.disabled = true;
+            googleBtn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">progress_activity</span> Processing...';
+            googleBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            alertBox.classList.add('hidden');
+
+            try {
+                const provider = new GoogleAuthProvider();
+                const userCredential = await signInWithPopup(auth, provider);
+                const user = userCredential.user;
+                
+                await deleteUser(user);
+                
+                form.classList.add('hidden');
+                googleBtn.classList.add('hidden');
+                const separator = googleBtn.previousElementSibling;
+                if (separator) separator.classList.add('hidden');
+                
+                showAlert("Your Google-linked account and all associated data have been successfully and permanently deleted.", "success");
+            } catch (error) {
+                console.error(error);
+                let errorMessage = "An error occurred during Google Sign-In. Please try again.";
+                if(error.code === 'auth/popup-closed-by-user') errorMessage = "Google Sign-In was cancelled.";
+                
+                showAlert(errorMessage, "error");
+                
+                googleBtn.disabled = false;
+                googleBtn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="w-5 h-5"> Delete via Google Sign-In';
+                googleBtn.classList.remove('opacity-75', 'cursor-not-allowed');
             }
         });
     }
