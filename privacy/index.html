@@ -119,13 +119,32 @@
                 
                 <div>
                     <h4 id="kindo-deletion" class="text-white font-bold mb-2">4. Data Deletion</h4>
-                    <p>You have the right to request the deletion of your Kindo account and associated data. Here is how to delete your Kindo account:</p>
-                    <ol class="list-decimal pl-5 mt-2 space-y-1">
-                        <li>Open the Kindo app and log in.</li>
-                        <li>Go to your Profile / Settings.</li>
-                        <li>Tap on "Delete Account" and confirm.</li>
-                    </ol>
-                    <p class="mt-4">Alternatively, you can email us at <a href="mailto:support@prxcess.com" class="text-primary hover:underline font-bold">support@prxcess.com</a> with the subject "Account Deletion Request" from the email address associated with your account, and we will delete your data within 30 days.</p>
+                    <p class="mb-4">You have the right to request the deletion of your Kindo account and associated data. You can delete your account instantly using the form below:</p>
+                    
+                    <!-- Kindo Instant Account Deletion Form -->
+                    <div class="bg-surface border border-white/10 rounded-xl p-5 mb-6">
+                        <h5 class="text-white font-bold font-headline-md mb-3">Instant Account Deletion</h5>
+                        <p class="text-sm text-on-surface-variant mb-4">Enter your Kindo credentials to instantly and permanently delete your account and all associated data.</p>
+                        
+                        <div id="kindo-delete-alert" class="hidden mb-4 p-3 rounded-lg text-sm font-medium"></div>
+                        
+                        <form id="kindo-delete-form" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Email Address</label>
+                                <input type="email" id="kindo-email" required class="w-full bg-surface-variant border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="you@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Password</label>
+                                <input type="password" id="kindo-password" required class="w-full bg-surface-variant border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="••••••••">
+                            </div>
+                            <button type="submit" id="kindo-delete-btn" class="w-full bg-[#141414] text-white border border-red-500 hover:bg-red-500 hover:text-white px-4 py-2 rounded-lg font-bold transition-colors flex justify-center items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">delete_forever</span>
+                                Permanently Delete My Account
+                            </button>
+                        </form>
+                    </div>
+
+                    <p class="text-sm text-on-surface-variant">Alternatively, you can delete your account from within the Kindo app (Profile > Settings > Delete Account) or email us at <a href="mailto:support@prxcess.com" class="text-primary hover:underline font-bold">support@prxcess.com</a> with the subject "Account Deletion Request".</p>
                 </div>
             </div>
         </details>
@@ -201,5 +220,81 @@
     </div>
 </footer>
 </div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, deleteUser } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      projectId: "kindo-app-9579d",
+      appId: "1:218285599124:web:417df2e4aca5b290428781",
+      storageBucket: "kindo-app-9579d.firebasestorage.app",
+      apiKey: "AIzaSyDIJbHyVmKiyC7YxX3PXGg_GNwUQukdoc4",
+      authDomain: "kindo-app-9579d.firebaseapp.com",
+      messagingSenderId: "218285599124",
+      measurementId: "G-2HSJTJ6277"
+    };
+
+    let app, auth;
+    try {
+        app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+    } catch (e) {
+        console.error("Firebase config is missing or invalid.");
+    }
+
+    const form = document.getElementById('kindo-delete-form');
+    const alertBox = document.getElementById('kindo-delete-alert');
+    const submitBtn = document.getElementById('kindo-delete-btn');
+
+    if(form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if(!auth) {
+                showAlert("Firebase configuration is missing. Please update the privacy policy HTML source code.", "error");
+                return;
+            }
+
+            const email = document.getElementById('kindo-email').value;
+            const password = document.getElementById('kindo-password').value;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">progress_activity</span> Processing...';
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            alertBox.classList.add('hidden');
+
+            try {
+                // 1. Sign In to Firebase Auth to prove identity
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                // 2. Delete User from Firebase Auth (triggers the backend Cloud Function)
+                await deleteUser(user);
+                
+                // 3. Update UI
+                form.classList.add('hidden');
+                showAlert("Your account and all associated data have been successfully and permanently deleted.", "success");
+            } catch (error) {
+                console.error(error);
+                let errorMessage = "An error occurred. Please check your email and password and try again.";
+                if(error.code === 'auth/invalid-credential') errorMessage = "Incorrect email or password.";
+                if(error.code === 'auth/too-many-requests') errorMessage = "Too many failed attempts. Please try again later.";
+                
+                showAlert(errorMessage, "error");
+                
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span class="material-symbols-outlined text-sm">delete_forever</span> Permanently Delete My Account';
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        });
+    }
+
+    function showAlert(message, type) {
+        alertBox.textContent = message;
+        alertBox.className = `mb-4 p-3 rounded-lg text-sm font-medium ${type === 'success' ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`;
+        alertBox.classList.remove('hidden');
+    }
+</script>
 </body>
 </html>
