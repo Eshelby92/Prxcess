@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Prxcess is a high-performance studio crafting high-velocity cross-platform applications for the next generation of digital pioneers.">
-    <meta name="keywords" content="Prxcess, Prxcess Apps, Mobile App Development, Cross-Platform Apps, React Native, Firebase">
+    <meta name="keywords" content="Prxcess, Prxcess Apps, Mobile App Development, Cross-Platform Apps, React Native, Firebase, SnapMo, MusiCool, Kindo, BrewBalance, ProTouch Academy, Kids Educational Apps">
     <meta name="author" content="Prxcess Studio">
     
     <!-- Open Graph / Facebook -->
@@ -124,6 +124,11 @@
         @keyframes shimmer {
             100% { transform: translateX(100%); }
         }
+
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.03); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
     </style>
 </head>
 <body class="font-body-md text-body-md text-on-surface antialiased bg-[#080808]">
@@ -226,8 +231,10 @@
             <p class="text-on-surface-variant font-body-lg text-lg max-w-2xl mx-auto mb-10">A showcase of high-performance, beautiful mobile applications engineered for the future.</p>
             
             <!-- App Navigation Pills -->
-            <div class="flex flex-wrap justify-center gap-3 md:gap-4 max-w-3xl mx-auto">
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
                 <a href="#app-kindo" class="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-primary/20 hover:border-primary/50 transition-all font-body-md text-sm">Kindo</a>
+                <a href="#app-snapmo" class="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[#f43f5e]/20 hover:border-[#f43f5e]/50 transition-all font-body-md text-sm">SnapMo</a>
+                <a href="#app-musicool" class="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[#00f0ff]/20 hover:border-[#00f0ff]/50 transition-all font-body-md text-sm">MusiCool</a>
                 <a href="#app-brewbalance" class="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[#ffb000]/20 hover:border-[#ffb000]/50 transition-all font-body-md text-sm">BrewBalance</a>
                 <a href="#app-protouch" class="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-[#00ff88]/20 hover:border-[#00ff88]/50 transition-all font-body-md text-sm">ProTouch Academy</a>
             </div>
@@ -240,7 +247,10 @@
                     <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary p-[1px] shadow-[0_0_30px_rgba(240,86,255,0.3)] overflow-hidden">
                         <img src="https://kindo-app-9579d.web.app/kindo-icon.png" alt="Kindo Logo" class="w-full h-full object-cover rounded-2xl" />
                     </div>
-                    <h2 class="font-headline-lg text-4xl text-white font-bold">Kindo</h2>
+                    <div>
+                        <span class="inline-block font-label-sm text-[11px] text-primary bg-primary/10 px-3 py-0.5 rounded-full border border-primary/30 uppercase tracking-widest mb-1">Family &amp; Utilities</span>
+                        <h2 class="font-headline-lg text-4xl text-white font-bold">Kindo</h2>
+                    </div>
                 </div>
                 <div>
                     <h3 class="text-xl text-primary font-bold mb-3">The Ultimate Family Companion</h3>
@@ -305,7 +315,187 @@
             </div>
         </div>
 
-        <!-- App 2: BrewBalance -->
+        <!-- App 2: SnapMo -->
+        <div id="app-snapmo" class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-32 pt-24 -mt-24">
+            <div class="lg:col-span-7 flex flex-col justify-center lg:justify-start order-2 lg:order-1 group reveal reveal-left">
+                <div class="relative w-full max-w-3xl">
+                    <div class="absolute inset-0 bg-[#f43f5e]/20 blur-[100px] rounded-full scale-110 group-hover:bg-[#f43f5e]/40 transition-colors duration-700"></div>
+                    <div class="relative glass-card aspect-video rounded-2xl overflow-hidden float-animation border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:scale-[1.02] transition-transform duration-500">
+                        <img id="snapmo-main-img" src="assets/snapmo/1_snapmo_studio.png" alt="SnapMo Studio" class="w-full h-full object-cover object-center transition-all duration-500" />
+                        
+                        <!-- Slide Caption Overlay -->
+                        <div class="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/10 flex items-center justify-between text-xs pointer-events-none transition-all duration-300">
+                            <div>
+                                <span class="text-white/60 font-label-sm uppercase tracking-wider text-[10px]">Showcase Spotlight</span>
+                                <p id="snapmo-caption-title" class="text-white font-bold text-sm">Animation Studio &amp; Filmstrip</p>
+                            </div>
+                            <span id="snapmo-counter" class="text-[#f43f5e] font-label-sm font-bold bg-[#f43f5e]/15 px-2.5 py-1 rounded-md border border-[#f43f5e]/30">1 / 5</span>
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button onclick="prevSnapmoImg()" aria-label="Previous screenshot" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#f43f5e] hover:border-[#f43f5e] z-30">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button onclick="nextSnapmoImg()" aria-label="Next screenshot" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#f43f5e] hover:border-[#f43f5e] z-30">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Thumbnails -->
+                <div class="flex gap-3 overflow-x-auto mt-6 pb-4 custom-scrollbar w-full max-w-3xl justify-start">
+                    <img onclick="setSnapmoImg(0)" src="assets/snapmo/1_snapmo_studio.png" title="Animation Studio & Filmstrip" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-[#f43f5e] snapmo-thumb transition-all hover:scale-105 flex-shrink-0" />
+                    <img onclick="setSnapmoImg(1)" src="assets/snapmo/2_snapmo_intro_card.png" title="Hollywood Title & Intro Scene" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-white/50 snapmo-thumb transition-all hover:scale-105 flex-shrink-0" />
+                    <img onclick="setSnapmoImg(2)" src="assets/snapmo/3_snapmo_screening_room.png" title="Screening Room Playback" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-white/50 snapmo-thumb transition-all hover:scale-105 flex-shrink-0" />
+                    <img onclick="setSnapmoImg(3)" src="assets/snapmo/4_snapmo_music_sfx.png" title="Soundtrack & SFX Studio" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-white/50 snapmo-thumb transition-all hover:scale-105 flex-shrink-0" />
+                    <img onclick="setSnapmoImg(4)" src="assets/snapmo/5_snapmo_export_celebration.png" title="1080p Export & Celebration" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-white/50 snapmo-thumb transition-all hover:scale-105 flex-shrink-0" />
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 space-y-8 order-1 lg:order-2 reveal reveal-right">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#f43f5e] via-[#8b5cf6] to-[#06b6d4] p-[1px] shadow-[0_0_30px_rgba(244,63,94,0.35)]">
+                        <div class="w-full h-full bg-surface rounded-2xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#f43f5e] text-3xl" style="font-variation-settings: 'FILL' 1;">movie</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="inline-block font-label-sm text-[11px] text-[#f43f5e] bg-[#f43f5e]/10 px-3 py-0.5 rounded-full border border-[#f43f5e]/30 uppercase tracking-widest mb-1">Kids Educational</span>
+                        <h2 class="font-headline-lg text-4xl text-white font-bold">SnapMo</h2>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl text-[#f43f5e] font-bold mb-3">A simple, playful yet powerful stop-motion animation studio for kids</h3>
+                    <p class="font-body-lg text-lg text-on-surface-variant leading-relaxed">SnapMo makes it easy and fun for children to turn clay, toys, LEGO, and drawings into stop-motion animation movies on phones, tablets, and web browsers.</p>
+                </div>
+                
+                <div class="glass-card p-4 rounded-xl inline-block border-[#22c55e]/30 hover:border-[#22c55e]/60 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] transition-all group w-full max-w-sm">
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="material-symbols-outlined text-[#22c55e] text-3xl group-hover:scale-110 transition-transform">verified</span>
+                        <div>
+                            <p class="font-label-sm text-xs text-[#22c55e] font-bold uppercase tracking-wider mb-0.5">RELEASE READY</p>
+                            <p class="font-body-md text-sm font-bold text-white">Signed APK &amp; Google Play Bundle (AAB)</p>
+                        </div>
+                    </div>
+                    <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-[#22c55e] via-[#06b6d4] to-[#8b5cf6] w-[85%] relative">
+                            <div class="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-xs mt-1.5 font-bold">
+                        <span class="text-on-surface-variant/70 font-normal">Internal Testing</span>
+                        <span class="text-[#22c55e]">85%</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+                    <div class="space-y-1">
+                        <h4 class="text-[#f43f5e] font-bold text-base md:text-lg">100% On-Device</h4>
+                        <p class="text-on-surface-variant text-xs">Zero Cloud Latency &amp; Private (IndexedDB)</p>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="text-[#8b5cf6] font-bold text-base md:text-lg">Full HD 1080p</h4>
+                        <p class="text-on-surface-variant text-xs">16 Mbps Native Video Export</p>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="text-[#06b6d4] font-bold text-base md:text-lg">25 Songs + SFX</h4>
+                        <p class="text-on-surface-variant text-xs">Procedural Audio Engine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- App 3: MusiCool -->
+        <div id="app-musicool" class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-32 pt-24 -mt-24">
+            <div class="lg:col-span-5 space-y-8 reveal reveal-left">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00f0ff] to-[#9d00ff] p-[1px] shadow-[0_0_30px_rgba(0,240,255,0.35)]">
+                        <div class="w-full h-full bg-surface rounded-2xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#00f0ff] text-3xl" style="font-variation-settings: 'FILL' 1;">music_note</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="inline-block font-label-sm text-[11px] text-[#00f0ff] bg-[#00f0ff]/10 px-3 py-0.5 rounded-full border border-[#00f0ff]/30 uppercase tracking-widest mb-1">Kids Educational</span>
+                        <h2 class="font-headline-lg text-4xl text-white font-bold">MusiCool</h2>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl text-[#00f0ff] font-bold mb-3">The Musical Sight-Reading &amp; Notation Academy</h3>
+                    <p class="font-body-lg text-lg text-on-surface-variant leading-relaxed">Engineered specifically for young musicians, MusiCool transforms sheet music into an intuitive, gamified adventure through 14 sight-reading, rhythm, and ear-training modules powered by real-time Web Audio synthesis and adaptive skill calibration.</p>
+                </div>
+                
+                <div class="glass-card p-4 rounded-xl inline-block border-[#00f0ff]/30 hover:border-[#00f0ff]/60 hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all group w-full max-w-sm">
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="material-symbols-outlined text-[#00f0ff] text-3xl group-hover:scale-110 transition-transform">speed</span>
+                        <div>
+                            <p class="font-label-sm text-xs text-[#00f0ff] font-bold uppercase tracking-wider mb-0.5">Internal Testing</p>
+                            <p class="font-body-md text-sm font-bold text-white">Web &amp; Mobile App</p>
+                        </div>
+                    </div>
+                    <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-[#00f0ff] to-[#9d00ff] w-[85%] relative">
+                            <div class="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-xs mt-1.5 font-bold">
+                        <span class="text-on-surface-variant/70 font-normal">Internal Testing</span>
+                        <span class="text-[#00f0ff]">85%</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+                    <div class="space-y-1">
+                        <h4 class="text-[#00f0ff] font-bold text-base md:text-lg">14 Modules</h4>
+                        <p class="text-on-surface-variant text-xs">Sight-reading &amp; ear games</p>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="text-primary font-bold text-base md:text-lg">Adaptive AI</h4>
+                        <p class="text-on-surface-variant text-xs">5-stage skill calibration</p>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="text-secondary font-bold text-base md:text-lg">Zero Latency</h4>
+                        <p class="text-on-surface-variant text-xs">Web Audio synthesizer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-7 flex flex-col justify-center lg:justify-end group reveal reveal-right">
+                <div class="relative w-full max-w-3xl">
+                    <div class="absolute inset-0 bg-[#00f0ff]/20 blur-[100px] rounded-full scale-110 group-hover:bg-[#00f0ff]/40 transition-colors duration-700"></div>
+                    <div class="relative glass-card aspect-video rounded-2xl overflow-hidden float-animation-delayed border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:scale-[1.02] transition-transform duration-500">
+                        <img id="musicool-main-img" src="assets/musicool/slide1_daily_training.png" alt="MusiCool Preview" class="w-full h-full object-cover object-center transition-all duration-500" />
+                        
+                        <!-- Slide Caption Overlay -->
+                        <div class="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/10 flex items-center justify-between text-xs pointer-events-none transition-all duration-300">
+                            <div>
+                                <span class="text-white/60 font-label-sm uppercase tracking-wider text-[10px]">Showcase Spotlight</span>
+                                <p id="musicool-caption-title" class="text-white font-bold text-sm">Daily Training &amp; Skill Calibration</p>
+                            </div>
+                            <span id="musicool-counter" class="text-[#00f0ff] font-label-sm font-bold bg-[#00f0ff]/15 px-2.5 py-1 rounded-md border border-[#00f0ff]/30">1 / 5</span>
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button onclick="prevMusicoolImg()" aria-label="Previous screenshot" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#00f0ff] hover:text-black z-30">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button onclick="nextMusicoolImg()" aria-label="Next screenshot" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#00f0ff] hover:text-black z-30">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Thumbnails -->
+                <div class="flex gap-3 overflow-x-auto mt-6 pb-4 custom-scrollbar w-full max-w-3xl justify-start">
+                    <img onclick="setMusicoolImg(0)" src="assets/musicool/slide1_daily_training.png" title="Daily Training & Skill Calibration" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-[#00f0ff] musicool-thumb transition-all hover:scale-105 flex-shrink-0" />
+                    <img onclick="setMusicoolImg(1)" src="assets/musicool/slide2_games_library.png" title="14-Game Arcade Catalog" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-white/50 musicool-thumb transition-all hover:scale-105 flex-shrink-0" />
+                    <img onclick="setMusicoolImg(2)" src="assets/musicool/slide3_keyboard_staff.png" title="Dual Grand Staff & Piano Visualizer" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-white/50 musicool-thumb transition-all hover:scale-105 flex-shrink-0" />
+                    <img onclick="setMusicoolImg(3)" src="assets/musicool/slide4_sight_reading_highway.png" title="Sight-Reading Highway Real-Time Lane" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-white/50 musicool-thumb transition-all hover:scale-105 flex-shrink-0" />
+                    <img onclick="setMusicoolImg(4)" src="assets/musicool/slide5_achievements.png" title="Achievement Sticker Album" class="h-16 md:h-20 aspect-video rounded-lg object-cover cursor-pointer border-2 border-transparent hover:border-white/50 musicool-thumb transition-all hover:scale-105 flex-shrink-0" />
+                </div>
+            </div>
+        </div>
+
+        <!-- App 4: BrewBalance -->
         <div id="app-brewbalance" class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-32 pt-24 -mt-24">
             <div class="lg:col-span-7 flex flex-col justify-center lg:justify-start order-2 lg:order-1 group reveal reveal-left">
                 <div class="relative w-full max-w-3xl">
@@ -322,7 +512,10 @@
                             <span class="material-symbols-outlined text-[#ffb000] text-3xl" style="font-variation-settings: 'FILL' 1;">local_cafe</span>
                         </div>
                     </div>
-                    <h2 class="font-headline-lg text-4xl text-white font-bold">BrewBalance</h2>
+                    <div>
+                        <span class="inline-block font-label-sm text-[11px] text-[#ffb000] bg-[#ffb000]/10 px-3 py-0.5 rounded-full border border-[#ffb000]/30 uppercase tracking-widest mb-1">Health &amp; Lifestyle</span>
+                        <h2 class="font-headline-lg text-4xl text-white font-bold">BrewBalance</h2>
+                    </div>
                 </div>
                 <div>
                     <h3 class="text-xl text-[#ffb000] font-bold mb-3">Your personal caffeine tracker</h3>
@@ -358,7 +551,7 @@
             </div>
         </div>
 
-        <!-- App 3: ProTouch Academy -->
+        <!-- App 5: ProTouch Academy -->
         <div id="app-protouch" class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-32 pt-24 -mt-24">
             <div class="lg:col-span-5 space-y-8 reveal reveal-left">
                 <div class="flex items-center gap-4">
@@ -367,7 +560,10 @@
                             <span class="material-symbols-outlined text-[#00ff88] text-3xl" style="font-variation-settings: 'FILL' 1;">sports_soccer</span>
                         </div>
                     </div>
-                    <h2 class="font-headline-lg text-4xl text-white font-bold">ProTouch Academy</h2>
+                    <div>
+                        <span class="inline-block font-label-sm text-[11px] text-[#00ff88] bg-[#00ff88]/10 px-3 py-0.5 rounded-full border border-[#00ff88]/30 uppercase tracking-widest mb-1">Sports &amp; Training</span>
+                        <h2 class="font-headline-lg text-4xl text-white font-bold">ProTouch Academy</h2>
+                    </div>
                 </div>
                 <div>
                     <h3 class="text-xl text-[#00ff88] font-bold mb-3">Elite Football Coaching at Home</h3>
@@ -674,6 +870,92 @@
             let newIndex = currentKindoIndex + 1;
             if(newIndex >= kindoImages.length) newIndex = 0;
             setKindoImg(newIndex);
+        }
+
+        // SnapMo Carousel
+        const snapmoImages = [
+            { src: "assets/snapmo/1_snapmo_studio.png", title: "Animation Studio & Filmstrip" },
+            { src: "assets/snapmo/2_snapmo_intro_card.png", title: "Hollywood Title & Intro Scene" },
+            { src: "assets/snapmo/3_snapmo_screening_room.png", title: "Screening Room Playback" },
+            { src: "assets/snapmo/4_snapmo_music_sfx.png", title: "Soundtrack & SFX Studio" },
+            { src: "assets/snapmo/5_snapmo_export_celebration.png", title: "1080p Export & Celebration" }
+        ];
+        let currentSnapmoIndex = 0;
+        
+        function setSnapmoImg(index) {
+            currentSnapmoIndex = index;
+            const imgEl = document.getElementById('snapmo-main-img');
+            const titleEl = document.getElementById('snapmo-caption-title');
+            const counterEl = document.getElementById('snapmo-counter');
+            if(imgEl) imgEl.src = snapmoImages[index].src;
+            if(titleEl) titleEl.textContent = snapmoImages[index].title;
+            if(counterEl) counterEl.textContent = `${index + 1} / ${snapmoImages.length}`;
+            
+            const thumbs = document.querySelectorAll('.snapmo-thumb');
+            thumbs.forEach((thumb, i) => {
+                if(i === index) {
+                    thumb.classList.remove('border-transparent', 'hover:border-white/50');
+                    thumb.classList.add('border-[#f43f5e]');
+                } else {
+                    thumb.classList.add('border-transparent', 'hover:border-white/50');
+                    thumb.classList.remove('border-[#f43f5e]');
+                }
+            });
+        }
+        
+        function prevSnapmoImg() {
+            let newIndex = currentSnapmoIndex - 1;
+            if(newIndex < 0) newIndex = snapmoImages.length - 1;
+            setSnapmoImg(newIndex);
+        }
+        
+        function nextSnapmoImg() {
+            let newIndex = currentSnapmoIndex + 1;
+            if(newIndex >= snapmoImages.length) newIndex = 0;
+            setSnapmoImg(newIndex);
+        }
+
+        // MusiCool Carousel
+        const musicoolImages = [
+            { src: "assets/musicool/slide1_daily_training.png", title: "Daily Training & Skill Calibration" },
+            { src: "assets/musicool/slide2_games_library.png", title: "14-Game Arcade Catalog" },
+            { src: "assets/musicool/slide3_keyboard_staff.png", title: "Dual Grand Staff & Piano Visualizer" },
+            { src: "assets/musicool/slide4_sight_reading_highway.png", title: "Sight-Reading Highway Real-Time Lane" },
+            { src: "assets/musicool/slide5_achievements.png", title: "Achievement Sticker Album" }
+        ];
+        let currentMusicoolIndex = 0;
+        
+        function setMusicoolImg(index) {
+            currentMusicoolIndex = index;
+            const imgEl = document.getElementById('musicool-main-img');
+            const titleEl = document.getElementById('musicool-caption-title');
+            const counterEl = document.getElementById('musicool-counter');
+            if(imgEl) imgEl.src = musicoolImages[index].src;
+            if(titleEl) titleEl.textContent = musicoolImages[index].title;
+            if(counterEl) counterEl.textContent = `${index + 1} / ${musicoolImages.length}`;
+            
+            const thumbs = document.querySelectorAll('.musicool-thumb');
+            thumbs.forEach((thumb, i) => {
+                if(i === index) {
+                    thumb.classList.remove('border-transparent', 'hover:border-white/50');
+                    thumb.classList.add('border-[#00f0ff]');
+                } else {
+                    thumb.classList.add('border-transparent', 'hover:border-white/50');
+                    thumb.classList.remove('border-[#00f0ff]');
+                }
+            });
+        }
+        
+        function prevMusicoolImg() {
+            let newIndex = currentMusicoolIndex - 1;
+            if(newIndex < 0) newIndex = musicoolImages.length - 1;
+            setMusicoolImg(newIndex);
+        }
+        
+        function nextMusicoolImg() {
+            let newIndex = currentMusicoolIndex + 1;
+            if(newIndex >= musicoolImages.length) newIndex = 0;
+            setMusicoolImg(newIndex);
         }
     </script>
 </div>
